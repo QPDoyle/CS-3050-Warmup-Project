@@ -1,0 +1,377 @@
+{
+    "states": [
+      {
+        "name": "Alabama",
+        "abbreviation": "AL",
+        "region": "South",
+        "population": 5.0,
+        "borders": 4,
+        "ocean": "Gulf of Mexico"
+      },
+      {
+        "name": "Alaska",
+        "abbreviation": "AK",
+        "region": "West",
+        "population": 0.7,
+        "borders": 0,
+        "ocean": "Pacific Ocean, Arctic Ocean"
+      },
+      {
+        "name": "Arizona",
+        "abbreviation": "AZ",
+        "region": "West",
+        "population": 7.2,
+        "borders": 5
+      },
+      {
+        "name": "Arkansas",
+        "abbreviation": "AR",
+        "region": "South",
+        "population": 3.0,
+        "borders": 6
+      },
+      {
+        "name": "California",
+        "abbreviation": "CA",
+        "region": "West",
+        "population": 39.5,
+        "borders": 3,
+        "ocean": "Pacific Ocean"
+      },
+      {
+        "name": "Colorado",
+        "abbreviation": "CO",
+        "region": "West",
+        "population": 5.8,
+        "borders": 7
+      },
+      {
+        "name": "Connecticut",
+        "abbreviation": "CT",
+        "region": "Northeast",
+        "population": 3.6,
+        "borders": 3,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "Delaware",
+        "abbreviation": "DE",
+        "region": "South",
+        "population": 1.0,
+        "borders": 3,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "Florida",
+        "abbreviation": "FL",
+        "region": "South",
+        "population": 21.5,
+        "borders": 2,
+        "ocean": "Atlantic Ocean, Gulf of Mexico"
+      },
+      {
+        "name": "Georgia",
+        "abbreviation": "GA",
+        "region": "South",
+        "population": 10.7,
+        "borders": 5,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "Hawaii",
+        "abbreviation": "HI",
+        "region": "West",
+        "population": 1.5,
+        "borders": 0,
+        "ocean": "Pacific Ocean"
+      },
+      {
+        "name": "Idaho",
+        "abbreviation": "ID",
+        "region": "West",
+        "population": 1.8,
+        "borders": 6
+      },
+      {
+        "name": "Illinois",
+        "abbreviation": "IL",
+        "region": "Midwest",
+        "population": 12.8,
+        "borders": 5
+      },
+      {
+        "name": "Indiana",
+        "abbreviation": "IN",
+        "region": "Midwest",
+        "population": 6.8,
+        "borders": 4
+      },
+      {
+        "name": "Iowa",
+        "abbreviation": "IA",
+        "region": "Midwest",
+        "population": 3.3,
+        "borders": 6
+      },
+      {
+        "name": "Kansas",
+        "abbreviation": "KS",
+        "region": "Midwest",
+        "population": 2.9,
+        "borders": 4
+      },
+      {
+        "name": "Kentucky",
+        "abbreviation": "KY",
+        "region": "South",
+        "population": 4.5,
+        "borders": 7
+      },
+      {
+        "name": "Louisiana",
+        "abbreviation": "LA",
+        "region": "South",
+        "population": 4.7,
+        "borders": 3,
+        "ocean": "Gulf of Mexico"
+      },
+      {
+        "name": "Maine",
+        "abbreviation": "ME",
+        "region": "Northeast",
+        "population": 1.4,
+        "borders": 1,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "Maryland",
+        "abbreviation": "MD",
+        "region": "South",
+        "population": 6.2,
+        "borders": 4,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "Massachusetts",
+        "abbreviation": "MA",
+        "region": "Northeast",
+        "population": 7.0,
+        "borders": 5,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "Michigan",
+        "abbreviation": "MI",
+        "region": "Midwest",
+        "population": 10.1,
+        "borders": 3
+      },
+      {
+        "name": "Minnesota",
+        "abbreviation": "MN",
+        "region": "Midwest",
+        "population": 5.7,
+        "borders": 4
+      },
+      {
+        "name": "Mississippi",
+        "abbreviation": "MS",
+        "region": "South",
+        "population": 3.0,
+        "borders": 4,
+        "ocean": "Gulf of Mexico"
+      },
+      {
+        "name": "Missouri",
+        "abbreviation": "MO",
+        "region": "Midwest",
+        "population": 6.2,
+        "borders": 8
+      },
+      {
+        "name": "Montana",
+        "abbreviation": "MT",
+        "region": "West",
+        "population": 1.1,
+        "borders": 4
+      },
+      {
+        "name": "Nebraska",
+        "abbreviation": "NE",
+        "region": "Midwest",
+        "population": 2.0,
+        "borders": 6
+      },
+      {
+        "name": "Nevada",
+        "abbreviation": "NV",
+        "region": "West",
+        "population": 3.1,
+        "borders": 5
+      },
+      {
+        "name": "New Hampshire",
+        "abbreviation": "NH",
+        "region": "Northeast",
+        "population": 1.4,
+        "borders": 3,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "New Jersey",
+        "abbreviation": "NJ",
+        "region": "Northeast",
+        "population": 9.3,
+        "borders": 3,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "New Mexico",
+        "abbreviation": "NM",
+        "region": "West",
+        "population": 2.1,
+        "borders": 5
+      },
+      {
+        "name": "New York",
+        "abbreviation": "NY",
+        "region": "Northeast",
+        "population": 20.2,
+        "borders": 5,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "North Carolina",
+        "abbreviation": "NC",
+        "region": "South",
+        "population": 10.4,
+        "borders": 4,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "North Dakota",
+        "abbreviation": "ND",
+        "region": "Midwest",
+        "population": 0.8,
+        "borders": 3
+      },
+      {
+        "name": "Ohio",
+        "abbreviation": "OH",
+        "region": "Midwest",
+        "population": 11.8,
+        "borders": 5
+      },
+      {
+        "name": "Oklahoma",
+        "abbreviation": "OK",
+        "region": "South",
+        "population": 4.0,
+        "borders": 6
+      },
+      {
+        "name": "Oregon",
+        "abbreviation": "OR",
+        "region": "West",
+        "population": 4.2,
+        "borders": 4,
+        "ocean": "Pacific Ocean"
+      },
+      {
+        "name": "Pennsylvania",
+        "abbreviation": "PA",
+        "region": "Northeast",
+        "population": 13.0,
+        "borders": 6
+      },
+      {
+        "name": "Rhode Island",
+        "abbreviation": "RI",
+        "region": "Northeast",
+        "population": 1.1,
+        "borders": 2,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "South Carolina",
+        "abbreviation": "SC",
+        "region": "South",
+        "population": 5.1,
+        "borders": 2,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "South Dakota",
+        "abbreviation": "SD",
+        "region": "Midwest",
+        "population": 0.9,
+        "borders": 6
+      },
+      {
+        "name": "Tennessee",
+        "abbreviation": "TN",
+        "region": "South",
+        "population": 6.9,
+        "borders": 8
+      },
+      {
+        "name": "Texas",
+        "abbreviation": "TX",
+        "region": "South",
+        "population": 29.1,
+        "borders": 4,
+        "ocean": "Gulf of Mexico"
+      },
+      {
+        "name": "Utah",
+        "abbreviation": "UT",
+        "region": "West",
+        "population": 3.2,
+        "borders": 6
+      },
+      {
+        "name": "Vermont",
+        "abbreviation": "VT",
+        "region": "Northeast",
+        "population": 0.6,
+        "borders": 3
+      },
+      {
+        "name": "Virginia",
+        "abbreviation": "VA",
+        "region": "South",
+        "population": 8.6,
+        "borders": 5,
+        "ocean": "Atlantic Ocean"
+      },
+      {
+        "name": "Washington",
+        "abbreviation": "WA",
+        "region": "West",
+        "population": 7.7,
+        "borders": 2,
+        "ocean": "Pacific Ocean"
+      },
+      {
+        "name": "West Virginia",
+        "abbreviation": "WV",
+        "region": "South",
+        "population": 1.8,
+        "borders": 5
+      },
+      {
+        "name": "Wisconsin",
+        "abbreviation": "WI",
+        "region": "Midwest",
+        "population": 5.9,
+        "borders": 4
+      },
+      {
+        "name": "Wyoming",
+        "abbreviation": "WY",
+        "region": "West",
+        "population": 0.6,
+        "borders": 6
+      }
+    ]
+  }
