@@ -8,7 +8,8 @@ def firebase_auth():
     from firebase_admin import credentials
 
     #update below to say r"\path\to\file.json"
-    cred = credentials.Certificate(r"file path")
+
+    cred = credentials.Certificate(r"/Users/quinndoyle/CS3050/CS-3050-Warmup-Project/DO-NOT-ADD-TO-GIT")
     firebase_admin.initialize_app(cred)
 
     db = firestore.client()
