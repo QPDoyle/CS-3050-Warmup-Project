@@ -2,7 +2,7 @@ import pyparsing as pp
 from pyparsing import rest_of_line, ParseException
 
 test_string = "object_one == object_==two"
-first_keyword = pp.one_of("population region ocean borders")
+first_keyword = pp.one_of("population region ocean borders abbreviation")
 operators = pp.one_of("== < > of")
 second_keyword = pp.Word(pp.printables)
 
@@ -14,7 +14,7 @@ while True:
     
     elif raw_input.lower() == "help":
         print("Please follow the format of 'keyword operator value'\n"
-              "Keywords: population, region, ocean, borders\n"
+              "Keywords: population, region, ocean, borders, abbreviation\n"
               "Operators: ==, <, >, of\n"
               "Value: state names, number values\n"
               "Examples: population of New Mexico, borders > 3")
