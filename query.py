@@ -1,7 +1,8 @@
 import pyparsing as pp
+from pyparsing import rest_of_line
 
 test_string = "object_one == object_==two"
-first_keyword = pp.one_of("population region ocean bordering")
+first_keyword = pp.one_of("population region ocean borders")
 operators = pp.one_of("== < > of")
 second_keyword = pp.Word(pp.printables)
 
@@ -15,7 +16,8 @@ while True:
         print("placeholder help text")
     
     else:
-        parse_format = first_keyword + operators + second_keyword
+
+        parse_format = first_keyword + operators + rest_of_line
         parsed_string = parse_format.parse_string(raw_input)
         print(parsed_string)
     
