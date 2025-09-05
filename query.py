@@ -1,7 +1,6 @@
 import pyparsing as pp
 from pyparsing import rest_of_line, ParseException
 
-test_string = "object_one == object_==two"
 first_keyword = pp.one_of("population region ocean borders abbreviation")
 operators = pp.one_of("== < > of")
 second_keyword = pp.Word(pp.printables)
@@ -46,3 +45,18 @@ while True:
             print("This is not a valid query. Please try again")
     
     
+    # def equal(first_keyword, sec_keyword):
+    #     state_list = []
+    #     return state_list
+
+    # def less_than(first_keyword, sec_keyword):
+    #     state_list = []
+    #     return state_list
+
+    # def greater_than(first_keyword, sec_keyword):
+    #     state_list = []
+    #     return state_list
+
+    # def of(first_keyword, sec_keyword):
+    #     state_list = []
+    #     return state_list
