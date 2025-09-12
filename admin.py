@@ -4,25 +4,54 @@ import json
 #State class - per documentation 
 #https://firebase.google.com/docs/firestore/query-data/get-data
 class State:
-    def __init__(self, name, abbreviation, region, oceans, population=0, borders=0):
+    def __init__(self, name, abbreviation, region, population, borders, ocean):
         self.name = name
         self.abbreviation = abbreviation
         self.region = region
         self.population = population
         self.borders = borders
-        #Oceans is currently a string. We either need to separate by comma in this function and read each into a list, or when querying for 
-        #specific oceans, just seeing if the oceans field contains the correct ocean with additional parsing maybe?
-        self.oceans = oceans
+        self.ocean = ocean
     
     @staticmethod
-    #I do not know what this function should do
     def from_dict(source):
-        return
+
+        #Converts oceans to a list
+        ocean = source.get("ocean")
+        if ocean:
+            list_of_oceans = ocean.split(",")
+        else:
+            list_of_oceans = []
+
+        return State(
+            name = source.get("name"),
+            abbreviation = source.get("abbreviation"),
+            region = source.get("region"),
+            population = source.get("population"),
+            borders = source.get("borders"),
+            ocean = list_of_oceans
+        )
     
     #I also do not know what this function should do
-    def to_dict(source):
-        return
+    #I have it as a set function
+    def to_dict(self):
+
+        ocean = self.ocean
+        if ocean:
+            list_of_oceans = ocean.split(",")
+        else:
+            list_of_oceans = []
+        
+
+        return {
+            "name": self.name,
+            "abbreviation": self.abbreviation,
+            "region": self.region,
+            "population": self.population,
+            "borders": self.borders,
+            "ocean": list_of_oceans
+        }
     
+    #From what exists already in the documentation
     def __repr__(self):
         return f"State(\
             name = {self.name}, \
@@ -30,8 +59,9 @@ class State:
             region = {self.region}, \
             population = {self.population}, \
             borders = {self.borders}, \
-            oceans = {self.oceans} \
+            ocean = {self.ocean} \
             )"
+
 
 def uploadJSON():
 
