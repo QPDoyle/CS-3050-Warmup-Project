@@ -1,11 +1,15 @@
 import pyparsing as pp
+from firestore import firebase_auth
 from pyparsing import rest_of_line, ParseException
 
 first_keyword = pp.one_of("population region ocean borders abbreviation")
 operators = pp.one_of("== < > of")
 second_keyword = pp.Word(pp.printables)
 
+db = firebase_auth()
+
 while True:
+    
     raw_input = input("> ")
     
     if raw_input.lower() == "quit":
