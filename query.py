@@ -32,7 +32,7 @@ def run_query(key, operand, value):
 
         results.clear()
         for doc in query_ref:
-            results.append(doc.id)
+            results.append(doc.to_dict()["name"])
         return results
 
 
