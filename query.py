@@ -72,9 +72,7 @@ while True:
         try:
             conj_index = raw_input.find(' and ')
             raw_input1 = raw_input[0:conj_index]
-            raw_input2 = raw_input[conj_index+5:]
-            print(raw_input1)
-            print(raw_input2)
+            raw_input2 = raw_input[conj_index+len(' and '):]
 
             parse_format = (first_keyword + operators + rest_of_line)
 
@@ -97,9 +95,7 @@ while True:
         try:
             conj_index = raw_input.find(' or ')
             raw_input1 = raw_input[0:conj_index]
-            raw_input2 = raw_input[conj_index+4:]
-            print(raw_input1)
-            print(raw_input2)
+            raw_input2 = raw_input[conj_index+len(' or '):]
 
             parse_format = (first_keyword + operators + rest_of_line)
 
@@ -118,10 +114,14 @@ while True:
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
+    else:
+        try:
+            parse_format = first_keyword + operators + rest_of_line
+            parsed_string = parse_format.parse_string(raw_input)
+            print(run_query(parsed_string[0],parsed_string[1], parsed_string[2]))
+        except ParseException as e:
+            print("This is not a valid query. Please try again")
 
-
-
-        
 
     
     # def equal(first_keyword, sec_keyword):
