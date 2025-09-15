@@ -43,6 +43,16 @@ def intersect(list1, list2):
             intersection.append(item)
     return intersection
 
+def union(list1, list2):
+    union = []
+    for item in list1:
+        if not (item in union):
+            union.append(item)
+    for item in list2:
+        if not (item in union):
+            union.append(item)
+    return union
+
 #getting and parsing input
 while True:
 
@@ -63,11 +73,13 @@ while True:
             parse_format = (first_keyword + operators + second_keyword + "and" +
                             first_keyword + operators + second_keyword)
             parsed_string = parse_format.parse_string(raw_input)
+
             query1 = run_query(parsed_string[0], parsed_string[1], parsed_string[2]).copy()
-            #print(query1)
+            
             query2 = run_query(parsed_string[4], parsed_string[5], parsed_string[6])
             #print(query2)
             print(parsed_string)
+
             print(intersect(query1, query2))
         except ParseException as e:
             print("This is not a valid query. Please try again")
@@ -77,7 +89,16 @@ while True:
             parse_format = (first_keyword + operators + second_keyword + "or" +
                             first_keyword + operators + second_keyword)
             parsed_string = parse_format.parse_string(raw_input)
-            print(parsed_string)
+ 
+            query1 = run_query(parsed_string[0], parsed_string[1], parsed_string[2]).copy()
+            #print(query1)
+
+            query2 = run_query(parsed_string[4], parsed_string[5], parsed_string[6])
+
+            print(query2)
+            #print(parsed_string)
+            
+            print(union(query1, query2))
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
