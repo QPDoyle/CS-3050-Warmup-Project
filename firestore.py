@@ -10,6 +10,7 @@ def firebase_auth():
         firebase_admin.initialize_app(cred)
 
     db = firestore.client()
+    print("Firestore initialized")
 
     return db
 

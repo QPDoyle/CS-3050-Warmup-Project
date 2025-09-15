@@ -47,7 +47,29 @@ while True:
             print(parsed_string)
         except ParseException as e:
             print("This is not a valid query. Please try again")
-    
+            
+        input_dictionary = {
+            "population": "population",
+            "region": "region",
+            "ocean": "ocean",
+            "borders": "borders",
+            "abbreviation": "abbreviation"
+        }
+      
+    def run_query(key, opperand, value):
+        #Dictionary to map the keys to the database keys
+        #TODO: Figure out how to map each opperand from input to JSON
+        input = input_dictionary[key]
+        if opperand == "of":
+            doc_ref = db.collection("states").document(value)
+            doc = doc_ref.get() # either true or false
+            if doc.exists:
+                print(f"{key} of {value} is {(doc.to_dict())["Map Key"]}")
+            else:
+                print("does not exist")
+        # TODO: add in < > == ...
+        
+
     
     # def equal(first_keyword, sec_keyword):
     #     state_list = []
