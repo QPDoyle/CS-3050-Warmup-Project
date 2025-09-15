@@ -70,15 +70,24 @@ while True:
 
     elif ' and ' in raw_input:
         try:
-            parse_format = (first_keyword + operators + second_keyword + "and" +
-                            first_keyword + operators + second_keyword)
-            parsed_string = parse_format.parse_string(raw_input)
+            conj_index = raw_input.find(' and ')
+            raw_input1 = raw_input[0:conj_index]
+            raw_input2 = raw_input[conj_index+5:]
+            print(raw_input1)
+            print(raw_input2)
 
-            query1 = run_query(parsed_string[0], parsed_string[1], parsed_string[2]).copy()
+            parse_format = (first_keyword + operators + rest_of_line)
+
+            parsed_string1 = parse_format.parse_string(raw_input1)
+            parsed_string2 = parse_format.parse_string(raw_input2)
             
-            query2 = run_query(parsed_string[4], parsed_string[5], parsed_string[6])
+            # print(parsed_string1)
+            # print(parsed_string2)
+
+            query1 = run_query(parsed_string1[0], parsed_string1[1], parsed_string1[2]).copy()
+            
+            query2 = run_query(parsed_string2[0], parsed_string2[1], parsed_string2[2])
             #print(query2)
-            print(parsed_string)
 
             print(intersect(query1, query2))
         except ParseException as e:
@@ -86,29 +95,29 @@ while True:
 
     elif ' or ' in raw_input:
         try:
-            parse_format = (first_keyword + operators + second_keyword + "or" +
-                            first_keyword + operators + second_keyword)
-            parsed_string = parse_format.parse_string(raw_input)
- 
-            query1 = run_query(parsed_string[0], parsed_string[1], parsed_string[2]).copy()
-            #print(query1)
+            conj_index = raw_input.find(' or ')
+            raw_input1 = raw_input[0:conj_index]
+            raw_input2 = raw_input[conj_index+4:]
+            print(raw_input1)
+            print(raw_input2)
 
-            query2 = run_query(parsed_string[4], parsed_string[5], parsed_string[6])
+            parse_format = (first_keyword + operators + rest_of_line)
 
-            print(query2)
-            #print(parsed_string)
+            parsed_string1 = parse_format.parse_string(raw_input1)
+            parsed_string2 = parse_format.parse_string(raw_input2)
             
+            # print(parsed_string1)
+            # print(parsed_string2)
+
+            query1 = run_query(parsed_string1[0], parsed_string1[1], parsed_string1[2]).copy()
+            
+            query2 = run_query(parsed_string2[0], parsed_string2[1], parsed_string2[2])
+            #print(query2)
+
             print(union(query1, query2))
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
-    else:
-        try:
-            parse_format = first_keyword + operators + rest_of_line
-            parsed_string = parse_format.parse_string(raw_input)
-            print(run_query(parsed_string[0],parsed_string[1], parsed_string[2]))
-        except ParseException as e:
-            print("This is not a valid query. Please try again")
 
 
 
