@@ -14,7 +14,7 @@ db = firebase_auth()
 
 def run_query(key, operand, value):
     if operand == "of":
-        doc_ref = db.collection("states").document(value)
+        doc_ref = db.collection("States").document(value)
         doc = doc_ref.get()  # either true or false
         if doc.exists:
             print(f"{key} of {value} is {(doc.to_dict())[key]}")
@@ -25,7 +25,7 @@ def run_query(key, operand, value):
             value = int(value)
         else:
             value = value.lstrip()
-        states_ref = db.collection("states")
+        states_ref = db.collection("States")
         if key == "ocean":
             query_ref = states_ref.where(filter=FieldFilter(key, "array_contains", value)).stream()
         else:
@@ -73,7 +73,7 @@ while True:
         try:
             parse_format = first_keyword + operators + rest_of_line
             parsed_string = parse_format.parse_string(raw_input)
-            run_query(parsed_string[0],parsed_string[1], parsed_string[2])
+            run_query(parsed_string[0],parsed_string[1], parsed_string[2].strip())
         except ParseException as e:
             print("This is not a valid query. Please try again")
             
