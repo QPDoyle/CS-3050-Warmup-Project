@@ -63,8 +63,10 @@ while True:
             parse_format = (first_keyword + operators + second_keyword + "and" +
                             first_keyword + operators + second_keyword)
             parsed_string = parse_format.parse_string(raw_input)
-            query1 = run_query(parsed_string[0], parsed_string[1], parsed_string[2])
+            query1 = run_query(parsed_string[0], parsed_string[1], parsed_string[2]).copy()
+            #print(query1)
             query2 = run_query(parsed_string[4], parsed_string[5], parsed_string[6])
+            #print(query2)
             print(parsed_string)
             print(intersect(query1, query2))
         except ParseException as e:
