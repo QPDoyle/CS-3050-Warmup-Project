@@ -7,14 +7,12 @@ from pyparsing import rest_of_line, ParseException
 first_keyword = pp.one_of("population region ocean borders abbreviation")
 operators = pp.one_of("== < > of")
 second_keyword = pp.Word(pp.printables)
+results = []
 
 db = firebase_auth()
 
 
 def run_query(key, operand, value):
-    # Dictionary to map the keys to the database keys
-    # TODO: Figure out how to map each operand from input to JSON
-    #input = input_dictionary[key]
     if operand == "of":
         doc_ref = db.collection("states").document(value)
         doc = doc_ref.get()  # either true or false
@@ -33,12 +31,10 @@ def run_query(key, operand, value):
         else:
             query_ref = states_ref.where(filter=FieldFilter(key, operand, value)).stream()
 
-        if query_ref.__sizeof__() > 0:
-            for doc in query_ref:
-                print(doc.id, end = ", ")
-            print("")
-        else:
-            print("none")
+        for doc in query_ref:
+            results.append(doc.id)
+        print(results)
+        results.clear()
 
 
 while True:
@@ -77,7 +73,6 @@ while True:
         try:
             parse_format = first_keyword + operators + rest_of_line
             parsed_string = parse_format.parse_string(raw_input)
-            print(parsed_string)
             run_query(parsed_string[0],parsed_string[1], parsed_string[2])
         except ParseException as e:
             print("This is not a valid query. Please try again")
