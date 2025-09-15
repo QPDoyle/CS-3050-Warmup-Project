@@ -11,8 +11,9 @@ results = []
 
 db = firebase_auth()
 
-
+#checks the parsed input against the firebase
 def run_query(key, operand, value):
+    value = value.lstrip()
     if operand == "of":
         doc_ref = db.collection("states").document(value)
         doc = doc_ref.get()  # either true or false
@@ -20,23 +21,29 @@ def run_query(key, operand, value):
             print(f"{key} of {value} is {(doc.to_dict())[key]}")
         else:
             print("does not exist")
-    else:
+    else: # ==, >, and <
         if key == "borders" or key == "population":
             value = int(value)
-        else:
-            value = value.lstrip()
-        states_ref = db.collection("states")
-        if key == "ocean":
-            query_ref = states_ref.where(filter=FieldFilter(key, "array_contains", value)).stream()
-        else:
-            query_ref = states_ref.where(filter=FieldFilter(key, operand, value)).stream()
 
+        if key == "ocean":
+            query_ref = db.collection("states").where(filter=FieldFilter(key, "array_contains", value)).stream()
+        else:
+            query_ref = db.collection("states").where(filter=FieldFilter(key, operand, value)).stream()
+
+        results.clear()
         for doc in query_ref:
             results.append(doc.id)
-        print(results)
-        results.clear()
+        return results
 
 
+def intersect(list1, list2):
+    intersection = []
+    for item in list1:
+        if item in list2:
+            intersection.append(item)
+    return intersection
+
+#getting and parsing input
 while True:
     
     raw_input = input("> ")
@@ -56,7 +63,10 @@ while True:
             parse_format = (first_keyword + operators + second_keyword + "and" +
                             first_keyword + operators + second_keyword)
             parsed_string = parse_format.parse_string(raw_input)
+            query1 = run_query(parsed_string[0], parsed_string[1], parsed_string[2])
+            query2 = run_query(parsed_string[4], parsed_string[5], parsed_string[6])
             print(parsed_string)
+            print(intersect(query1, query2))
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
@@ -73,7 +83,7 @@ while True:
         try:
             parse_format = first_keyword + operators + rest_of_line
             parsed_string = parse_format.parse_string(raw_input)
-            run_query(parsed_string[0],parsed_string[1], parsed_string[2])
+            print(run_query(parsed_string[0],parsed_string[1], parsed_string[2]))
         except ParseException as e:
             print("This is not a valid query. Please try again")
             
