@@ -45,12 +45,12 @@ def intersect(list1, list2):
 
 #getting and parsing input
 while True:
-    
+
     raw_input = input("> ")
-    
+
     if raw_input.lower() == "quit":
         break
-    
+
     elif raw_input.lower() == "help":
         print("Please follow the format of 'keyword operator value'\n"
               "Keywords: population, region, ocean, borders, abbreviation\n"
@@ -86,14 +86,7 @@ while True:
             print(run_query(parsed_string[0],parsed_string[1], parsed_string[2]))
         except ParseException as e:
             print("This is not a valid query. Please try again")
-            
-        input_dictionary = {
-            "population": "population",
-            "region": "region",
-            "ocean": "ocean",
-            "borders": "borders",
-            "abbreviation": "abbreviation"
-        }
+
 
 
         
