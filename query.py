@@ -18,13 +18,18 @@ def run_query(key, operand, value):
         doc_ref = db.collection("States").document(value)
         doc = doc_ref.get()  # either true or false
         if doc.exists:
-            print(f"{key} of {value} is {(doc.to_dict())[key]}")
+            if (key == "population"):
+                return (f"{key.capitalize()} of {value} is {(doc.to_dict())[key]} million")
+            else:
+                return (f"{key.capitalize()} of {value} is {(doc.to_dict())[key]}")
         else:
-            print("does not exist")
+            return ("This is not a valid query. Please try again")
     else: # ==, >, and <
         if key == "borders" or key == "population":
-            value = int(value)
-
+            try:
+                value = int(value)
+            except ValueError as e:
+                return "This is not a valid query. Please try again"
         if key == "ocean":
             query_ref = db.collection("States").where(filter=FieldFilter(key, "array_contains", value)).stream()
         else:
