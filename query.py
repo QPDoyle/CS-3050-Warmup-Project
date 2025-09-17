@@ -4,7 +4,7 @@ from google.cloud.firestore_v1 import FieldFilter
 from firestore import firebase_auth
 from pyparsing import rest_of_line, ParseException
 
-first_keyword = pp.one_of("population region ocean borders abbreviation")
+first_keyword = pp.one_of("population region ocean borders abbreviation", caseless=True)
 operators = pp.one_of("== < > of")
 second_keyword = pp.Word(pp.printables)
 results = []
@@ -13,6 +13,7 @@ db = firebase_auth()
 
 #checks the parsed input against the firebase
 def run_query(key, operand, value):
+
     value = value.lstrip()
     if operand == "of":
         doc_ref = db.collection("States").document(value)
