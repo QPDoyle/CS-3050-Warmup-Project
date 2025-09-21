@@ -74,7 +74,7 @@ while True:
               "Value: state names, number values\n"
               "Examples: population of New Mexico, borders > 3")
 
-    elif ' and ' in raw_input:
+    elif ' and ' in raw_input and ' of ' not in raw_input:
         try:
             conj_index = raw_input.find(' and ')
             raw_input1 = raw_input[0:conj_index]
@@ -97,7 +97,7 @@ while True:
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
-    elif ' or ' in raw_input:
+    elif ' or ' in raw_input and ' of ' not in raw_input:
         try:
             conj_index = raw_input.find(' or ')
             raw_input1 = raw_input[0:conj_index]
