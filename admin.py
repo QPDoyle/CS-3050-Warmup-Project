@@ -31,8 +31,6 @@ class State:
             ocean = list_of_oceans
         )
     
-    #I also do not know what this function should do
-    #I have it as a set function
     def to_dict(self):
 
         ocean = self.ocean
