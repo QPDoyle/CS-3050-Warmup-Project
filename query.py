@@ -91,9 +91,9 @@ while True:
               "Keywords include: population, region, ocean, borders, abbreviation\n"
               "Operators include: ==, <, >, of\n"
               "Values include: state names, number values\n"
-              "Examples: population of New Mexico, borders > 3"
-              "To utilize multiple attributes of states, use 'and' or 'or' between queries"
-              "Examples: population > 3 and ocean == Pacific Ocean, borders < 5 and region == South"
+              "Examples: population of New Mexico, borders > 3\n"
+              "To utilize multiple attributes of states, use 'and' or 'or' between queries\n"
+              "Examples: population > 3 and ocean == Pacific Ocean, borders < 5 and region == South\n"
               "Note: population is written in the millions")
     
     #Ensure that queries only include one and or one or
