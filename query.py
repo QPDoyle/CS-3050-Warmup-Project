@@ -30,6 +30,10 @@ def run_query(key, operand, value):
             elif (key == "borders"):
                 return(f"{value} has {(doc.to_dict())[key]} {key}")
             
+            #Returns oceans outside of a list
+            elif (key == "ocean"):
+                return(f", ".join((doc.to_dict())[key]))
+            
             else:
                 if not doc.to_dict()[key]:
                     return (f"{value} has no {key}")
@@ -63,6 +67,7 @@ def run_query(key, operand, value):
             results.append(doc.to_dict()["name"])
 
         results.sort()
+        
         return results
 
 
@@ -169,7 +174,7 @@ while True:
 
             else:
                 print(output)
-                
+
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
