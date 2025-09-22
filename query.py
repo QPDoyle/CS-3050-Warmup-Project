@@ -40,7 +40,7 @@ def run_query(key, operand, value):
         if key == "borders" or key == "population":
             try:
                 #Borders and population are stored as integers
-                value = int(value)
+                value = float(value)
 
             except ValueError as e:
                 return "This is not a valid query. Please try again"
