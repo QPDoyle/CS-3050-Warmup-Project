@@ -38,7 +38,7 @@ def run_query(key, operand, value):
 
     #non-integer keywords can't be compared with < or >
     elif operand != "==" and key != "borders" and key != "population":
-        return ("This is not a valid query. Please try again");
+        return ("This is not a valid query. Please try again")
 
     else: # ==, >, and <
         if key == "borders" or key == "population":
@@ -158,20 +158,3 @@ while True:
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
-
-    
-    # def equal(first_keyword, sec_keyword):
-    #     state_list = []
-    #     return state_list
-
-    # def less_than(first_keyword, sec_keyword):
-    #     state_list = []
-    #     return state_list
-
-    # def greater_than(first_keyword, sec_keyword):
-    #     state_list = []
-    #     return state_list
-
-    # def of(first_keyword, sec_keyword):
-    #     state_list = []
-    #     return state_list
