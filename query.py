@@ -24,7 +24,7 @@ def run_query(key, operand, value):
 
             #Adds that the population is stored in millions
             if (key == "population"):
-                return (f"{key.capitalize()} of {value} is {(doc.to_dict())[key]} million")
+                return (f"The {key} of {value} is {(doc.to_dict())[key]} million")
             
             #Cleans up response for borders
             elif (key == "borders"):
@@ -37,7 +37,7 @@ def run_query(key, operand, value):
             else:
                 if not doc.to_dict()[key]:
                     return (f"{value} has no {key}")
-                return (f"{key.capitalize()} of {value} is {(doc.to_dict())[key]}")
+                return (f"The {key} of {value} is {(doc.to_dict())[key]}")
             
         else:
             return ("This is not a valid query. Please try again")
