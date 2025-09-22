@@ -23,7 +23,7 @@ def run_query(key, operand, value):
             print("does not exist")
     else: # ==, >, and <
         if key == "borders" or key == "population":
-            value = int(value)
+            value = float(value)
 
         if key == "ocean":
             query_ref = db.collection("States").where(filter=FieldFilter(key, "array_contains", value)).stream()
