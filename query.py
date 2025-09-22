@@ -31,6 +31,8 @@ def run_query(key, operand, value):
                 return(f"{value} has {(doc.to_dict())[key]} {key}")
             
             else:
+                if not doc.to_dict()[key]:
+                    return (f"{value} has no {key}")
                 return (f"{key.capitalize()} of {value} is {(doc.to_dict())[key]}")
             
         else:
@@ -154,7 +156,11 @@ while True:
         try:
             parse_format = first_keyword + operators + rest_of_line
             parsed_string = parse_format.parse_string(raw_input)
-            print(run_query(parsed_string[0],parsed_string[1], parsed_string[2]))
+            output = run_query(parsed_string[0],parsed_string[1], parsed_string[2])
+            if not output:
+                print("No results found from query")
+            else:
+                print(output)
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
