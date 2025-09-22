@@ -71,6 +71,7 @@ def intersect(list1, list2):
     for item in list1:
         if item in list2:
             intersection.append(item)
+    intersection.sort() # sorts into alphabetical order
     return intersection
 
 #Function creates a list of all the items in either list
@@ -82,6 +83,7 @@ def union(list1, list2):
     for item in list2:
         if not (item in union):
             union.append(item)
+    union.sort() # sorts into alphabetical order
     return union
 
 #Getting and parsing input
