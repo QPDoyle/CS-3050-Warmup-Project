@@ -4,7 +4,7 @@ from google.cloud.firestore_v1 import FieldFilter
 from firestore import firebase_auth
 from pyparsing import rest_of_line, ParseException
 
-first_keyword = pp.one_of("population region ocean borders abbreviation")
+first_keyword = pp.one_of("population region ocean borders abbreviation", caseless=True)
 operators = pp.one_of("== < > of")
 second_keyword = pp.Word(pp.printables)
 results = []
@@ -13,29 +13,53 @@ db = firebase_auth()
 
 #checks the parsed input against the firebase
 def run_query(key, operand, value):
+
     value = value.lstrip()
+
     if operand == "of":
+
         doc_ref = db.collection("States").document(value)
         doc = doc_ref.get()  # either true or false
         if doc.exists:
-            print(f"{key} of {value} is {(doc.to_dict())[key]}")
+
+            #Adds that the population is stored in millions
+            if (key == "population"):
+                return (f"{key.capitalize()} of {value} is {(doc.to_dict())[key]} million")
+            
+            #Cleans up response for borders
+            elif (key == "borders"):
+                return(f"{value} has {(doc.to_dict())[key]} {key}")
+            
+            else:
+                return (f"{key.capitalize()} of {value} is {(doc.to_dict())[key]}")
+            
         else:
-            print("does not exist")
+            return ("This is not a valid query. Please try again")
+        
     else: # ==, >, and <
         if key == "borders" or key == "population":
-            value = float(value)
+            try:
+                #Borders and population are stored as integers
+                value = int(value)
 
+            except ValueError as e:
+                return "This is not a valid query. Please try again"
+
+        #Oceans are stored in a list; this insures the list contains the value    
         if key == "ocean":
             query_ref = db.collection("States").where(filter=FieldFilter(key, "array_contains", value)).stream()
+
         else:
             query_ref = db.collection("States").where(filter=FieldFilter(key, operand, value)).stream()
 
         results.clear()
         for doc in query_ref:
             results.append(doc.to_dict()["name"])
+
         return results
 
 
+#Function creates a list of all items in both of two lists
 def intersect(list1, list2):
     intersection = []
     for item in list1:
@@ -43,6 +67,7 @@ def intersect(list1, list2):
             intersection.append(item)
     return intersection
 
+#Function creates a list of all the items in either list
 def union(list1, list2):
     union = []
     for item in list1:
@@ -53,7 +78,7 @@ def union(list1, list2):
             union.append(item)
     return union
 
-#getting and parsing input
+#Getting and parsing input
 while True:
 
     raw_input = input("> ")
@@ -62,13 +87,20 @@ while True:
         break
 
     elif raw_input.lower() == "help":
-        print("Please follow the format of 'keyword operator value'\n"
-              "Keywords: population, region, ocean, borders, abbreviation\n"
-              "Operators: ==, <, >, of\n"
-              "Value: state names, number values\n"
-              "Examples: population of New Mexico, borders > 3")
+        print("Please follow the format of 'keyword operator value' for all queries made\n"
+              "Keywords include: population, region, ocean, borders, abbreviation\n"
+              "Operators include: ==, <, >, of\n"
+              "Values include: state names, number values\n"
+              "Examples: population of New Mexico, borders > 3\n"
+              "To utilize multiple attributes of states, use 'and' or 'or' between queries\n"
+              "Examples: population > 3 and ocean == Pacific Ocean, borders < 5 and region == South\n"
+              "Note: population is written in the millions")
+    
+    #Ensure that queries only include one and or one or
+    elif raw_input.count(' and ') > 1 or raw_input.count(' or ') > 1 or (raw_input.count(' or ') > 0 and raw_input.count(' and ') > 0):
+        print("Only a single 'and' or a single 'or' is allowed in a query. Please try again")
 
-    elif ' and ' in raw_input:
+    elif ' and ' in raw_input and ' of ' not in raw_input:
         try:
             conj_index = raw_input.find(' and ')
             raw_input1 = raw_input[0:conj_index]
@@ -91,7 +123,7 @@ while True:
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
-    elif ' or ' in raw_input:
+    elif ' or ' in raw_input and ' of ' not in raw_input:
         try:
             conj_index = raw_input.find(' or ')
             raw_input1 = raw_input[0:conj_index]
