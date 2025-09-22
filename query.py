@@ -62,6 +62,7 @@ def run_query(key, operand, value):
         for doc in query_ref:
             results.append(doc.to_dict()["name"])
 
+        results.sort()
         return results
 
 
