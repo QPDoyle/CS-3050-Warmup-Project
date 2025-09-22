@@ -35,7 +35,11 @@ def run_query(key, operand, value):
             
         else:
             return ("This is not a valid query. Please try again")
-        
+
+    #non-integer keywords can't be compared with < or >
+    elif operand != "==" and key != "borders" and key != "population":
+        return ("This is not a valid query. Please try again");
+
     else: # ==, >, and <
         if key == "borders" or key == "population":
             try:
