@@ -87,12 +87,6 @@ def union(list1, list2):
     union.sort() # sorts into alphabetical order
     return union
 
-#Function prints lists separated by commas
-def print_list(list1):
-    comma_string = ', '.join(list1)
-    print(comma_string)
-
-
 #Getting and parsing input
 while True:
 
@@ -134,7 +128,7 @@ while True:
             query2 = run_query(parsed_string2[0], parsed_string2[1], parsed_string2[2])
             #print(query2)
 
-            print_list(intersect(query1, query2))
+            print(', '.join(intersect(query1, query2)))
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
@@ -157,7 +151,7 @@ while True:
             query2 = run_query(parsed_string2[0], parsed_string2[1], parsed_string2[2])
             #print(query2)
 
-            print_list(union(query1, query2))
+            print(', '.join(union(query1, query2)))
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
@@ -166,10 +160,16 @@ while True:
             parse_format = first_keyword + operators + rest_of_line
             parsed_string = parse_format.parse_string(raw_input)
             output = run_query(parsed_string[0],parsed_string[1], parsed_string[2])
+
             if not output:
                 print("No results found from query")
+
+            elif isinstance(output, list):
+                print(', '.join(output)) #Print output outside of list format
+
             else:
                 print(output)
+                
         except ParseException as e:
             print("This is not a valid query. Please try again")
 
