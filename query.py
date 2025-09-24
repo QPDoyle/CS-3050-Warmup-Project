@@ -40,11 +40,11 @@ def run_query(key, operand, value):
                 return (f"The {key} of {value} is {(doc.to_dict())[key]}")
             
         else:
-            return ("This is not a valid query. Please try again or enter <help> for assistance")
+            return ("This is not a valid query. Please try again or enter 'help' for assistance")
 
     #non-integer keywords can't be compared with < or >
     elif operand != "==" and key != "borders" and key != "population":
-        return ("This is not a valid query. Please try again or enter <help> for assistance")
+        return ("This is not a valid query. Please try again or enter 'help' for assistance")
 
     else: # ==, >, and <
         if key == "borders" or key == "population":
@@ -53,7 +53,7 @@ def run_query(key, operand, value):
                 value = float(value)
 
             except ValueError as e:
-                return "This is not a valid query. Please try again or enter <help> for assistance"
+                return "This is not a valid query. Please try again or enter 'help' for assistance"
 
         #Oceans are stored in a list; this insures the list contains the value    
         if key == "ocean":
@@ -135,7 +135,7 @@ while True:
 
             print(', '.join(intersect(query1, query2)))
         except ParseException as e:
-            print("This is not a valid query. Please try again or enter <help> for assistance")
+            print("This is not a valid query. Please try again or enter 'help' for assistance")
 
     elif ' or ' in raw_input and ' of ' not in raw_input:
         try:
@@ -158,7 +158,7 @@ while True:
 
             print(', '.join(union(query1, query2)))
         except ParseException as e:
-            print("This is not a valid query. Please try again or enter <help> for assistance")
+            print("This is not a valid query. Please try again or enter 'help' for assistance")
 
     else:
         try:
@@ -176,5 +176,5 @@ while True:
                 print(output)
 
         except ParseException as e:
-            print("This is not a valid query. Please try again or enter <help> for assistance")
+            print("This is not a valid query. Please try again or enter 'help' for assistance")
 
