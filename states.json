@@ -14,7 +14,7 @@
         "region": "West",
         "population": 0.7,
         "borders": 0,
-        "ocean": "Pacific Ocean, Arctic Ocean"
+        "ocean": "Pacific Ocean,Arctic Ocean"
       },
       {
         "name": "Arizona",
