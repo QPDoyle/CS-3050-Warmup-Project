@@ -141,10 +141,14 @@ while True:
             except AttributeError as e:
                 print("This is not a valid query. Please try again or enter 'help' for assistance")
                 continue
-            if not query1 or not query2:
+            if len(query1) == 0 or len(query2) == 0:
                 print("No results found from query")
             else:
-                print(', '.join(intersect(query1, query2)))
+                output = (', '.join(intersect(query1, query2)))
+                if output:
+                    print(output)
+                else:
+                    print("No results found from query")
         except ParseException as e:
             print("This is not a valid query. Please try again or enter 'help' for assistance")
 
