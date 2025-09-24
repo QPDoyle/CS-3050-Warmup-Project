@@ -128,12 +128,23 @@ while True:
             # print(parsed_string1)
             # print(parsed_string2)
 
-            query1 = run_query(parsed_string1[0], parsed_string1[1], parsed_string1[2]).copy()
-            
-            query2 = run_query(parsed_string2[0], parsed_string2[1], parsed_string2[2])
-            #print(query2)
+            query1_beta = run_query(parsed_string1[0], parsed_string1[1], parsed_string1[2])
+            try :
+                query1 = query1_beta.copy()
+            except AttributeError as e:
+                print("This is not a valid query. Please try again or enter 'help' for assistance")
+                continue
 
-            print(', '.join(intersect(query1, query2)))
+            query2_beta = run_query(parsed_string2[0], parsed_string2[1], parsed_string2[2])
+            try :
+                query2 = query2_beta.copy()
+            except AttributeError as e:
+                print("This is not a valid query. Please try again or enter 'help' for assistance")
+                continue
+            if not query1 or not query2:
+                print("No results found from query")
+            else:
+                print(', '.join(intersect(query1, query2)))
         except ParseException as e:
             print("This is not a valid query. Please try again or enter 'help' for assistance")
 
