@@ -156,17 +156,21 @@ while True:
             try :
                 query1 = query1_beta.copy()
             except AttributeError as e:
-                query1 = []
+                print("This is not a valid query. Please try again or enter 'help' for assistance")
+                continue
             
             # force query2 to copy and catch attribute error
             query2_beta = run_query(parsed_string2[0], parsed_string2[1], parsed_string2[2])
             try :
                 query2 = query2_beta.copy()
             except AttributeError as e:
-                query2 = []
-            #print(query2)
+                print("This is not a valid query. Please try again or enter 'help' for assistance")
+                continue 
 
-            print(', '.join(union(query1, query2)))
+            if not query1 and not query2:
+                print("No results found from query")
+            else:    
+                print(', '.join(union(query1, query2)))
         except ParseException as e:
             print("This is not a valid query. Please try again or enter 'help' for assistance")
 
