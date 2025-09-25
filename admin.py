@@ -1,5 +1,7 @@
 from firestore import firebase_auth
 import json
+import argparse
+import os
 
 #State class with various attributes
 #Firestore documentation: https://firebase.google.com/docs/firestore/query-data/get-data
@@ -73,17 +75,26 @@ class State:
 
 
 #Function uploads the states from a JSON file into Firestore
-def uploadJSON():
+def uploadJSON(json_file):
 
     #Reference the database as db
     db = firebase_auth()
     
     #Open json file with state data
-    with open('states.json', 'r') as file:
-        data = json.load(file)
+    try:
+        with open(json_file, 'r') as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        print(f"{json_file} does not exist - please input a valid json file")
+
 
     #Creates/accesses a collection called states
     states_ref = db.collection("States")
+
+    #Clears the existing dataset
+    docs = states_ref.stream()
+    for doc in docs:
+        doc.reference.delete()
 
 
     for state in data['states']:
@@ -98,6 +109,16 @@ def uploadJSON():
         )
 
 
-uploadJSON()
+if __name__ == '__main__':
 
+    #Creates a parser that looks for a JSON file when called
+    parser = argparse.ArgumentParser(description='Upload JSON states file for Firestore')
+    parser.add_argument('json_file', type=str, help='The JSON File containing the data')
+    args = parser.parse_args()
+
+    #Ensures that the JSON file exists - ie, only states.json works
+    if not os.path.isfile(args.json_file):
+        print(f"{args.json_file} is not a valid file")
+    else:
+        uploadJSON(args.json_file)
 
